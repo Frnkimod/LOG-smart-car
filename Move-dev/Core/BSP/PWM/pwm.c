@@ -1,6 +1,6 @@
-// led.c
+// pwm.c
 // Author: Franki
 // Date: 2025-01-11
-#include "led.h"
+#include "pwm.h"
 
 // Your C functions and implementation go here
