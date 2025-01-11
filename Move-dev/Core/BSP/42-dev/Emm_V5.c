@@ -84,6 +84,7 @@ void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
         HAL_GPIO_WritePin(motor4->dev.IO_Stp.def,motor4->dev.IO_Stp.pin,GPIO_PIN_RESET);
         dwt_delay_us(cnt/2);
     }
+
 }
 
 /**
