@@ -55,7 +55,7 @@ void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
     //motor->speed=speed;//更新速度
     //motor->angle=angle;//更新角度
 }
-void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4,)
+void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
 {
     int32_t steps=(int32_t)(360/STPE_ANGLE);
     int32_t cnt=(60*1000000)/(70*STPES_PER_REVOLUTION);
