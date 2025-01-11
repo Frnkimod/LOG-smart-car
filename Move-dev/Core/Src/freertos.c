@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "../BSP/42-dev/Emm_V5.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -85,7 +85,7 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
-
+  Emm_V5Init();
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -154,7 +154,17 @@ void StartLURL_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+      if (LU.speed>0 && LU.angle !=0)
+      {
+          if(LU.angle>0)
+          {
+              Emm_V5Control(&LU,1,LU.speed,LU.angle);
+          }else{
+              Emm_V5Control(&LU,0,LU.speed,LU.angle);
+
+          }
+      }
+      osDelay(1);
   }
   /* USER CODE END StartLURL_Task */
 }

@@ -18,6 +18,7 @@ typedef struct {
 //电机参数结构体(目的:实时储存电机参数,方便动态调试需要改参数)
 typedef struct {
     Motor_Dev dev;//设备IO口信息
+    uint8_t dir;//转向
     int32_t speed;//转速(r/min)
     int32_t angle;//转角(°)
 }Motor;
@@ -28,6 +29,7 @@ extern Motor LL;
 
 void Emm_V5Init(void);
 void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle);
+void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4);
 void delay_us(int32_t us);
-void PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt);
+void Emm_PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt);
 #endif //INC_42_DEV_EMM_V5_H

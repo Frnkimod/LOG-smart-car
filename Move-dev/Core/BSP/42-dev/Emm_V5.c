@@ -51,16 +51,35 @@ void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
                           motor->dev.IO_Dir.pin,
                           GPIO_PIN_RESET);
     }
-    PWM_OUT(motor->dev.IO_Stp,steps,cnt);
-    motor->speed=speed;//更新速度
-    motor->angle=angle;//更新角度
+    Emm_PWM_OUT(motor->dev.IO_Stp,steps,cnt);
+    //motor->speed=speed;//更新速度
+    //motor->angle=angle;//更新角度
 }
+void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4,)
+{
+    int32_t steps=(int32_t)(360/STPE_ANGLE);
+    int32_t cnt=(60*1000000)/(70*STPES_PER_REVOLUTION);
+
+    for (int32_t i = 0; i < steps; i++) {
+        HAL_GPIO_WritePin(motor1->dev.IO_Stp.def,motor1->dev.IO_Stp.pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(motor2->dev.IO_Stp.def,motor2->dev.IO_Stp.pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(motor3->dev.IO_Stp.def,motor3->dev.IO_Stp.pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(motor4->dev.IO_Stp.def,motor4->dev.IO_Stp.pin,GPIO_PIN_SET);
+        dwt_delay_us(cnt/2);
+        //GPIOA->BSRR |=(1<<6);
+        HAL_GPIO_WritePin(motor1->dev.IO_Stp.def,motor1->dev.IO_Stp.pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(motor2->dev.IO_Stp.def,motor2->dev.IO_Stp.pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(motor3->dev.IO_Stp.def,motor3->dev.IO_Stp.pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(motor4->dev.IO_Stp.def,motor4->dev.IO_Stp.pin,GPIO_PIN_RESET);
+        dwt_delay_us(cnt/2);
+    }
+}
+
 /**
  * @brief       电机指定角度和速度控制
  * @param       int32_t us 例:delay_us(1000)为等待1000微秒
  * @retval      无
  */
-
 void delay_us(int32_t us)
 {
 /********************SysTick方式(寄存器)**************************/
@@ -112,7 +131,7 @@ void delay_us(int32_t us)
  * @param       io:输出io steps:脉冲数 cnt:脉冲频率
  * @retval      无
  */
-void PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt)
+void Emm_PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt)
 {
     for (int32_t i = 0; i < steps; i++) {
         //GPIOA->BRR |=(1<<6);
