@@ -154,16 +154,7 @@ void StartLURL_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-      if (LU.speed>0 && LU.angle !=0)
-      {
-          if(LU.angle>0)
-          {
-              Emm_V5Control(&LU,1,LU.speed,LU.angle);
-          }else{
-              Emm_V5Control(&LU,0,LU.speed,LU.angle);
-
-          }
-      }
+      Emm_V5Control(&RU,1,100,360);
       osDelay(1);
   }
   /* USER CODE END StartLURL_Task */
