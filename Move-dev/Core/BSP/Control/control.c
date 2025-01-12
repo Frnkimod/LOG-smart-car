@@ -7,18 +7,6 @@
 
 void con_init()
 {
-    RU.speed=BASESPEED;
-    RL.speed=BASESPEED;
-    LU.speed=BASESPEED;
-    LL.speed=BASESPEED;
-    RU.delay_motion=0;
-    RL.delay_motion=0;
-    LU.delay_motion=0;
-    LL.delay_motion=0;
-    RU.dir=0;
-    RL.dir=0;
-    LU.dir=0;
-    LL.dir=0;
 }
 /*
  * up: dir->0
