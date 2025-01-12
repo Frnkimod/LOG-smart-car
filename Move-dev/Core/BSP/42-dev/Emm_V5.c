@@ -16,10 +16,39 @@ Motor RU={
         .delay_motion = 0,  // 移动时长 (ms)
         .distance = 0  // 运行距离 (mm)
 };
-Motor LU;
-Motor RL;
-Motor LL;
-
+Motor LU= {
+        .dev={
+                .IO_Stp={LU_STP_TYPE, LU_STP_PIN},
+                .IO_Dir={LU_DIR_TYPE, LU_DIR_PIN},
+        },
+        .speed = 0,  // 转速 (r/min)
+        .angle = 0,    // 转角 (°)
+        .dir = 0,       // 轮子旋转方向 0顺1逆
+        .delay_motion = 0,  // 移动时长 (ms)
+        .distance = 0  // 运行距离 (mm);
+};
+Motor RL= {
+        .dev={
+                .IO_Stp={RL_STP_TYPE, RL_STP_PIN},
+                .IO_Dir={RL_DIR_TYPE, RL_DIR_PIN},
+        },
+        .speed = 0,  // 转速 (r/min)
+        .angle = 0,    // 转角 (°)
+        .dir = 0,       // 轮子旋转方向 0顺1逆
+        .delay_motion = 0,  // 移动时长 (ms)
+        .distance = 0  // 运行距离 (mm);
+};
+Motor LL={
+        .dev={
+                .IO_Stp={LL_STP_TYPE,LL_STP_PIN},
+                .IO_Dir={LL_DIR_TYPE,LL_DIR_PIN},
+        },
+        .speed = 0,  // 转速 (r/min)
+        .angle = 0,    // 转角 (°)
+        .dir = 0,       // 轮子旋转方向 0顺1逆
+        .delay_motion = 0,  // 移动时长 (ms)
+        .distance = 0  // 运行距离 (mm);
+        };
 
 /**
  * @brief       初始化四个电机io口信息储存到结构体中
