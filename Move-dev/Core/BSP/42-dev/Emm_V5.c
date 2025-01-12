@@ -5,7 +5,17 @@
 
 #include "Emm_V5.h"
 #include "../DWT/dwt.h"
-Motor RU;
+Motor RU={
+        .dev={
+                .IO_Stp={RU_STP_TYPE,RU_STP_PIN},
+                .IO_Dir={RU_DIR_TYPE,RU_DIR_PIN},
+        },
+        .speed = 0,  // 转速 (r/min)
+        .angle = 0,    // 转角 (°)
+        .dir = 0,       // 轮子旋转方向 0顺1逆
+        .delay_motion = 0,  // 移动时长 (ms)
+        .distance = 0  // 运行距离 (mm)
+};
 Motor LU;
 Motor RL;
 Motor LL;
@@ -19,12 +29,7 @@ Motor LL;
 void Emm_V5Init()
 {
     dwt_init();
-    Motor_Dev LU_buf={{RU_STP_TYPE,RU_STP_PIN},
-                      {RU_DIR_TYPE,RU_DIR_PIN}};
-    LU.dev=LU_buf;
-    Motor_Dev RU_buf={{RU_STP_TYPE,RU_STP_PIN},
-                      {RU_DIR_TYPE,RU_DIR_PIN}};
-    RU.dev=RU_buf;
+
 
     //...补齐LU,RL,LL初始化(参考以上代码)
 }
