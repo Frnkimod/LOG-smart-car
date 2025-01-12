@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "../BSP/42-dev/Emm_V5.h"
 #include "../BSP/DWT/dwt.h"
+#include "../BSP/Control/control.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,6 +88,7 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
   Emm_V5Init();
+  con_init();
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -137,6 +139,10 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+      con_motion(0,0,0,0);
+      dwt_delay_ms(1000);
+      con_motion(0,0,1,0);
+      dwt_delay_ms(1000);
 
       osDelay(1);
   }
