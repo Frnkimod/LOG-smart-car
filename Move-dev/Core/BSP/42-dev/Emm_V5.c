@@ -19,12 +19,10 @@ Motor LL;
 void Emm_V5Init()
 {
     dwt_init();
-    Motor_Dev LU_buf={{RU_EN_TYPE,RU_EN_PIN},
-                      {RU_STP_TYPE,RU_STP_PIN},
+    Motor_Dev LU_buf={{RU_STP_TYPE,RU_STP_PIN},
                       {RU_DIR_TYPE,RU_DIR_PIN}};
     LU.dev=LU_buf;
-    Motor_Dev RU_buf={{RU_EN_TYPE,RU_EN_PIN},
-                      {RU_STP_TYPE,RU_STP_PIN},
+    Motor_Dev RU_buf={{RU_STP_TYPE,RU_STP_PIN},
                       {RU_DIR_TYPE,RU_DIR_PIN}};
     RU.dev=RU_buf;
 

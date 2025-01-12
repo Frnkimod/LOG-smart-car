@@ -156,7 +156,7 @@ void StartLURL_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-          Emm_V5Control(&RU,1,100,360);
+      Emm_V5Control(&RU,1,100,360);
       osDelay(1);
   }
   /* USER CODE END StartLURL_Task */
