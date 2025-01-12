@@ -32,7 +32,6 @@ extern Motor LL;
 
 void Emm_V5Init(void);
 void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle);
-void delay_us(int32_t us);
 
 void Emm_PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt);
 #endif //INC_42_DEV_EMM_V5_H

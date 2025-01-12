@@ -85,58 +85,6 @@ void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
     }
 
 }
-
-/**
- * @brief       电机指定角度和速度控制
- * @param       int32_t us 例:delay_us(1000)为等待1000微秒
- * @retval      无
- */
-void delay_us(int32_t us)
-{
-/********************SysTick方式(寄存器)**************************/
-
-//    SysTick->LOAD = 72 * us;                                //????????
-//    SysTick->VAL = 0x00;                                        //???????
-//    SysTick->CTRL = 0x00000005;                                //??????HCLK,?????
-//    while(!(SysTick->CTRL & 0x00010000));        //?????0
-//    SysTick->CTRL = 0x00000004;
-/********************SysTick方式********************************/
-//    uint32_t startval,tickn,delays,wait;
-//
-//    startval = SysTick->VAL;
-//    tickn = HAL_GetTick();
-//    //sysc = 72000;  //SystemCoreClock / (1000U / uwTickFreq);
-//    delays =us * 72; //sysc / 1000 * udelay;
-//    if(delays > startval)
-//    {
-//        while(HAL_GetTick() == tickn)
-//        {
-//
-//        }
-//        wait = 72000 + startval - delays;
-//        while(wait < SysTick->VAL)
-//        {
-//
-//        }
-//    }
-//    else {
-//        wait = startval - delays;
-//        while (wait < SysTick->VAL && HAL_GetTick() == tickn) {
-//
-//        }
-//    }
-
-    uint16_t delay = 0xffff-us-3;		//从此数进行计数，如计数了65535次则刚好1us
-
-    HAL_TIM_Base_Start(&htim3);  	    //开启计数器
-    __HAL_TIM_SetCounter(&htim3,delay);	//设置计数器
-    while(delay<0xffff-3)
-    {
-        delay = __HAL_TIM_GetCounter(&htim3); //获取当前计数值
-    }
-    HAL_TIM_Base_Stop(&htim3);
-    //...待补充(具体需要按照时钟树配置构造)
-}
 /**
  * @brief       模拟PWM信号输出
  * @param       io:输出io steps:脉冲数 cnt:脉冲频率

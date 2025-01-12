@@ -8,29 +8,21 @@
 #include "main.h"
 
 /******************RU轮********************/
-#define RU_EN_TYPE GPIOA
-#define RU_EN_PIN GPIO_PIN_0
 #define RU_STP_TYPE RU_STP_GPIO_Port
 #define RU_STP_PIN RU_STP_Pin
 #define RU_DIR_TYPE RU_DIR_GPIO_Port
 #define RU_DIR_PIN RU_DIR_Pin
 /******************LU轮********************/
-#define LU_EN_TYPE GPIOA
-#define LU_EN_PIN GPIO_PIN_3
 #define LU_STP_TYPE GPIOA
 #define LU_STP_PIN GPIO_PIN_4
 #define LU_DIR_TYPE GPIOA
 #define LU_DIR_PIN GPIO_PIN_1
 /******************RL轮********************/
-#define RL_EN_TYPE GPIOA
-#define RL_EN_PIN GPIO_PIN_5
 #define RL_STP_TYPE GPIOA
 #define RL_STP_PIN GPIO_PIN_1
 #define RL_DIR_TYPE GPIOA
 #define RL_DIR_PIN GPIO_PIN_7
 /******************LL轮********************/
-#define LL_EN_TYPE GPIOA
-#define LL_EN_PIN GPIO_PIN_5
 #define LL_STP_TYPE GPIOA
 #define LL_STP_PIN GPIO_PIN_1
 #define LL_DIR_TYPE GPIOA
