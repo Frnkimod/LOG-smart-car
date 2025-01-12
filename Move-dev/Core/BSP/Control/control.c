@@ -3,10 +3,7 @@
 // Date: 2025-01-10
 #include "Control.h"
 
-Motor LU;
-Motor RL;
-Motor LL;
-gpio_Conf a1;
+
 
 void con_init()
 {
