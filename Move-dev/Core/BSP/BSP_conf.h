@@ -11,10 +11,10 @@
 /******************RU轮********************/
 #define RU_EN_TYPE GPIOA
 #define RU_EN_PIN GPIO_PIN_5
-#define RU_STP_TYPE GPIOA
-#define RU_STP_PIN GPIO_PIN_1
-#define RU_DIR_TYPE GPIOA
-#define RU_DIR_PIN GPIO_PIN_7
+#define RU_STP_TYPE RU_STP_GPIO_Port
+#define RU_STP_PIN RU_STP_Pin
+#define RU_DIR_TYPE RU_DIR_GPIO_Port
+#define RU_DIR_PIN RU_DIR_Pin
 /******************LU轮********************/
 #define LU_EN_TYPE GPIOA
 #define LU_EN_PIN GPIO_PIN_5

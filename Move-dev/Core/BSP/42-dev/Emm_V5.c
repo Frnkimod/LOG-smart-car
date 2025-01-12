@@ -18,7 +18,7 @@ Motor LL;
  */
 void Emm_V5Init()
 {
-    //dwt_init();
+    dwt_init();
     Motor_Dev LU_buf={{RU_EN_TYPE,RU_EN_PIN},
                       {RU_STP_TYPE,RU_STP_PIN},
                       {RU_DIR_TYPE,RU_DIR_PIN}};
@@ -149,9 +149,9 @@ void Emm_PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt)
     for (int32_t i = 0; i < steps; i++) {
         //GPIOA->BRR |=(1<<6);
         HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_SET);
-        //dwt_delay_us(cnt/2);
+        dwt_delay_us(cnt/2);
         //GPIOA->BSRR |=(1<<6);
         HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_RESET);
-      //  dwt_delay_us(cnt/2);
+        dwt_delay_us(cnt/2);
     }
 }

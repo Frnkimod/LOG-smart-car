@@ -87,7 +87,6 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
   Emm_V5Init();
-  dwt_init();
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -157,7 +156,7 @@ void StartLURL_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-      Emm_V5Control(&RU,1,100,360);
+          Emm_V5Control(&RU,1,100,360);
       osDelay(1);
   }
   /* USER CODE END StartLURL_Task */
