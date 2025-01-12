@@ -10,7 +10,7 @@ Motor RU={
                 .IO_Stp={RU_STP_TYPE,RU_STP_PIN},
                 .IO_Dir={RU_DIR_TYPE,RU_DIR_PIN},
         },
-        .speed = 0,  // 转速 (r/min)
+        .speed = 0,  // 转速 (r/  min)
         .angle = 0,    // 转角 (°)
         .dir = 0,       // 轮子旋转方向 0顺1逆
         .delay_motion = 0,  // 移动时长 (ms)
@@ -91,7 +91,7 @@ void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
 void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
 {
     int32_t steps=(int32_t)(360/STPE_ANGLE);
-    int32_t cnt=(60*1000000)/(70*STPES_PER_REVOLUTION);
+    int32_t cnt=(60*1000000)/(100*STPES_PER_REVOLUTION);
     HAL_GPIO_WritePin(motor1->dev.IO_Dir.def,
                       motor1->dev.IO_Dir.pin,
                       motor1->dir);
@@ -109,13 +109,13 @@ void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
         HAL_GPIO_WritePin(motor2->dev.IO_Stp.def,motor2->dev.IO_Stp.pin,GPIO_PIN_SET);
         HAL_GPIO_WritePin(motor3->dev.IO_Stp.def,motor3->dev.IO_Stp.pin,GPIO_PIN_SET);
         HAL_GPIO_WritePin(motor4->dev.IO_Stp.def,motor4->dev.IO_Stp.pin,GPIO_PIN_SET);
-        //dwt_delay_us(cnt/2);
+        dwt_delay_us(cnt/2);
         //GPIOA->BSRR |=(1<<6);
         HAL_GPIO_WritePin(motor1->dev.IO_Stp.def,motor1->dev.IO_Stp.pin,GPIO_PIN_RESET);
         HAL_GPIO_WritePin(motor2->dev.IO_Stp.def,motor2->dev.IO_Stp.pin,GPIO_PIN_RESET);
         HAL_GPIO_WritePin(motor3->dev.IO_Stp.def,motor3->dev.IO_Stp.pin,GPIO_PIN_RESET);
         HAL_GPIO_WritePin(motor4->dev.IO_Stp.def,motor4->dev.IO_Stp.pin,GPIO_PIN_RESET);
-        //dwt_delay_us(cnt/2);
+        dwt_delay_us(cnt/2);
     }
 
 }

@@ -13,20 +13,20 @@
 #define RU_DIR_TYPE RU_DIR_GPIO_Port
 #define RU_DIR_PIN RU_DIR_Pin
 /******************LU轮********************/
-#define LU_STP_TYPE GPIOA
-#define LU_STP_PIN GPIO_PIN_4
-#define LU_DIR_TYPE GPIOA
-#define LU_DIR_PIN GPIO_PIN_1
+#define LU_STP_TYPE LU_STP_GPIO_Port
+#define LU_STP_PIN LU_STP_Pin
+#define LU_DIR_TYPE LU_DIR_GPIO_Port
+#define LU_DIR_PIN LU_DIR_Pin
 /******************RL轮********************/
-#define RL_STP_TYPE GPIOA
-#define RL_STP_PIN GPIO_PIN_1
-#define RL_DIR_TYPE GPIOA
-#define RL_DIR_PIN GPIO_PIN_7
+#define RL_STP_TYPE RL_STP_GPIO_Port
+#define RL_STP_PIN RL_STP_Pin
+#define RL_DIR_TYPE RL_DIR_GPIO_Port
+#define RL_DIR_PIN RL_DIR_Pin
 /******************LL轮********************/
-#define LL_STP_TYPE GPIOA
-#define LL_STP_PIN GPIO_PIN_1
-#define LL_DIR_TYPE GPIOA
-#define LL_DIR_PIN GPIO_PIN_7
+#define LL_STP_TYPE LL_STP_GPIO_Port
+#define LL_STP_PIN LL_STP_Pin
+#define LL_DIR_TYPE LL_DIR_GPIO_Port
+#define LL_DIR_PIN LL_DIR_Pin
 
 //...其他轮定义方式以此类推（RU、LU、RL、LL）
 #define BASESPEED 3200
