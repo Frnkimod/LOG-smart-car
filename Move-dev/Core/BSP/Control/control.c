@@ -16,7 +16,7 @@ void con_init()
  * cw:dir->4
  * ccw:dir->5
  * */
-void con_motion(int32_t speed,int32_t distance,uint32_t dir,uint32_t delay_motion)
+void con_motion(int32_t speed,int32_t distance,uint32_t dir,int32_t delay_motion)
 {
     speed=3200;
     distance=10000;
