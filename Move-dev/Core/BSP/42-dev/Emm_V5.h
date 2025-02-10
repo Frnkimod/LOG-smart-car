@@ -29,6 +29,7 @@ extern Motor RU;
 extern Motor LU;
 extern Motor RL;
 extern Motor LL;
+extern Motor TT;
 
 void Emm_V5Init(void);
 void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle);

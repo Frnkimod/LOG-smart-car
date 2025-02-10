@@ -3,14 +3,17 @@
 // Date: 2025-02-09
 #include "../../Core/BSP/Control/control.h"
 
+
 #ifndef CHECK_LINE_H
 #define CHECK_LINE_H
 float BOUNDARY_VALUE[4];
+float BOUNDARY_RATE();
 int QR_NUM[6];
 void check_line_Init();
+void TT_motion(int32_t speed,int16_t dir,int32_t angle);
 void car_in_Init();
-float BOUNDARY_RATE();
-float ACTION_MODE();
+void angle_check(int mode);
+void pos_check(int mode);
 // Your function prototypes and declarations go here
 
 #endif // CHECK_LINE_H
