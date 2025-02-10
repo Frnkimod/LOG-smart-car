@@ -140,9 +140,9 @@ void StartDefaultTask(void const * argument)
   for(;;)
   {
       con_motion(0,0,0,0);
-      dwt_delay_ms(1000);
+      dwt_delay_ms(3000);
       con_motion(0,0,1,0);
-      dwt_delay_ms(1000);
+      dwt_delay_ms(3000);
 
       osDelay(1);
   }

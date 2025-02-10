@@ -91,7 +91,7 @@ void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
 void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
 {
     int32_t steps=(int32_t)(360/STPE_ANGLE);
-    int32_t cnt=(60*1000000)/(70*STPES_PER_REVOLUTION);
+    int32_t cnt=(60*1000000)/(100*STPES_PER_REVOLUTION);
     for (;;) {
         HAL_GPIO_WritePin(motor1->dev.IO_Dir.def,
                           motor1->dev.IO_Dir.pin,
