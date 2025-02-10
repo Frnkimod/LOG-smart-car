@@ -27,11 +27,17 @@
 #define LL_STP_PIN LL_STP_Pin
 #define LL_DIR_TYPE LL_DIR_GPIO_Port
 #define LL_DIR_PIN LL_DIR_Pin
+/******************TT轮********************/
+#define TT_STP_TYPE TT_STP_GPIO_Port
+#define TT_STP_PIN TT_STP_Pin
+#define TT_DIR_TYPE TT_DIR_GPIO_Port
+#define TT_DIR_PIN TT_DIR_Pin
+
 
 //...其他轮定义方式以此类推（RU、LU、RL、LL）
-#define BASESPEED 3200
+#define BASESPEED 60
 #define SPEEDFACTOR 3.9999
-#define STPES_PER_REVOLUTION 3200
+#define STPES_PER_REVOLUTION 60
 #define STPE_ANGLE (360.0/STPES_PER_REVOLUTION)
 #define SPEED (BASESPEED*SPEEDFACTOR)
 

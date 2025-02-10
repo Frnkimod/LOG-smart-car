@@ -49,6 +49,19 @@ Motor LL={
         .delay_motion = 0,  // 移动时长 (ms)
         .distance = 0  // 运行距离 (mm);
         };
+Motor TT={
+        .dev={
+                .IO_Stp={TT_STP_TYPE,TT_STP_PIN},
+                .IO_Dir={TT_DIR_TYPE,TT_DIR_PIN},
+        },
+        .speed = 0,  // 转速 (r/min)
+        .angle = 0,    // 转角 (°)
+        .dir = 0,       // 轮子旋转方向 0顺1逆
+        .delay_motion = 0,  // 移动时长 (ms)
+        .distance = 0  // 运行距离 (mm);
+};
+
+
 
 /**
  * @brief       初始化四个电机io口信息储存到结构体中
