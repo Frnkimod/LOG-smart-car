@@ -7,7 +7,7 @@
 #ifndef CHECK_LINE_H
 #define CHECK_LINE_H
 float BOUNDARY_VALUE[4];
-float BOUNDARY_RATE();
+float BOUNDARY_RATE(int flag);
 int QR_NUM[6];
 void check_line_Init();
 void TT_motion(int32_t speed,int16_t dir,int32_t angle);
