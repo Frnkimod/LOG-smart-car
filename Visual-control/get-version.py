@@ -15,7 +15,6 @@ class Version:
             if not ret:
                 print("无法读取摄像头数据")
                 break
-
             # 将帧转换为灰度图像
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
