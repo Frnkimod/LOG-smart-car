@@ -17,7 +17,6 @@ class Version:
                 break
             # 将帧转换为灰度图像
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
             # 应用 Canny 边缘检测
             edges = cv2.Canny(gray, 100, 200)
 
