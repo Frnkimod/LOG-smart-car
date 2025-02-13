@@ -64,7 +64,7 @@ void ac_motion(int need) // 分级调速，加减速与停止
 
     if (need >= 0 && need <= 2) {
         for (int i = 0; i < 3; i++) {
-            con_motion(values[need][i],0,1000)
+            con_motion(values[need][i],0,1000);
         }
     }
 }
