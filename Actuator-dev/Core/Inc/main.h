@@ -57,6 +57,12 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Servor_clip_Pin GPIO_PIN_8
+#define Servor_clip_GPIO_Port GPIOA
+#define Servor_flip_Pin GPIO_PIN_9
+#define Servor_flip_GPIO_Port GPIOA
+#define Servor_turntable_Pin GPIO_PIN_10
+#define Servor_turntable_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 
