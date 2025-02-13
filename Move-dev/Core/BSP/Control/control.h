@@ -9,7 +9,7 @@
 
 
 void con_init();
-void con_motion(int32_t speed,uint32_t dir,uint32_t time);
+void con_motion(int32_t speed,uint32_t dir,uint32_t distance);
 
 // Your function prototypes and declarations go here
 

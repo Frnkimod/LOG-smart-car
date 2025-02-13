@@ -8,24 +8,10 @@
 void con_init()
 {
 }
-/*
- * up: dir->0
- * down: dir->1
- * left: dir->2
- * right：dir->3
- * cw:dir->4
- * ccw:dir->5
- * */
-void con_motion(int32_t speed,uint32_t dir,uint32_t time)
+void con_motion(int32_t speed,uint32_t dir,uint32_t distance)
 {
-    RU.speed=speed;
-    LU.speed=speed;
-    RL.speed=speed;
-    LL.speed=speed;
-    RU.delay_motion=time;
-    LU.delay_motion=time;
-    RL.delay_motion=time;
-    LL.delay_motion=time;
+    RU.speed = LU.speed = RL.speed = LL.speed = speed;
+    RU.distance = LU.distance = RL.distance = LL.distance = distance;
 
     switch (dir) {
         case 0:
