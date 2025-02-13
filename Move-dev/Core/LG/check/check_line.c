@@ -2,15 +2,16 @@
 // Author: Init
 // Date: 2025-02-09
 #include "check_line.h"
+
 float um=0.618f;//设定标准比例系数
 // Your C functions and implementation go here
 void angle_check(int mode) // 角度校验
 {
-    int values[] = {20, 40, 60};
+    int values[] = {10, 15, 20};
 
     if (mode == 0) { // 找不到边界线，向右移动
         for (int i = 0; i < 3; i++) {
-            con_motion(values[i], 2, 10);
+            con_motion(values[i], 2, 1000);
         }
     }
     else if (mode == 1) { // 找得到边界线
@@ -20,7 +21,7 @@ void angle_check(int mode) // 角度校验
 
         if (rate1 != rate2) {
             for (int i = 0; i < 3; i++) {
-                con_motion(values[i], direction, 10);
+                con_motion(values[i], direction, 1000);
             }
         }
     }
@@ -28,11 +29,11 @@ void angle_check(int mode) // 角度校验
 
 void pos_check(int mode) // 车身距位置校验
 {
-    int values[] = {20, 40, 60};
+    int values[] = {10, 15, 20};
 
     if (mode == 0) { // 找不到边界线，向右移动
         for (int i = 0; i < 3; i++) {
-            con_motion(values[i], 3, 10);
+            con_motion(values[i], 3, 1000);
         }
     }
     else if (mode == 1) { // 找得到边界线
@@ -56,14 +57,14 @@ void pos_check(int mode) // 车身距位置校验
 void ac_motion(int need) // 分级调速，加减速与停止
 {
     int values[][3] = {
-            {60, 40, 20}, // need == 0（缓减速）
-            {20, 40, 60}, // need == 1（缓加速）
-            {40, 20,  0}  // need == 2（缓停止）
+            {20, 15, 10}, // need == 0（缓减速）
+            {10, 15, 20}, // need == 1（缓加速）
+            {20, 10,  0}  // need == 2（缓停止）
     };
 
     if (need >= 0 && need <= 2) {
         for (int i = 0; i < 3; i++) {
-            con_motion(values[need][i], 0, 10);
+            con_motion(values[need][i],0,1000)
         }
     }
 }
@@ -90,8 +91,9 @@ float BOUNDARY_RATE(int flag) // 车身边距比例
 }
 void car_in_Init()//小车进场
 {
-    TT_motion(60,0,0);
+    TT_motion(20,0,0);
     angle_check(1);
     pos_check(1);
 }
+
 
