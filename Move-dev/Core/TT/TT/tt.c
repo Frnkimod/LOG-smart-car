@@ -3,7 +3,7 @@
 // Date: 2025-02-13
 #include "tt.h"
 // Your C functions and implementation go here
-void smooth_motion(int32_t max_speed, int32_t acceleration, int32_t total_distance,
+void tt_smooth_motion(int32_t max_speed, int32_t acceleration, int32_t total_distance,
                    int32_t angle, int32_t dir, float load, int32_t target_position)
 // 控制机械臂的启动和停止,速度，加速度，距离，角度，方向，负载，目标位置
 {

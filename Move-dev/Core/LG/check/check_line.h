@@ -8,7 +8,8 @@
 #define CHECK_LINE_H
 float BOUNDARY_VALUE[4];
 float BOUNDARY_RATE(int flag);
-int QR_NUM[6];void angle_check(int mode);
+int QR_NUM[6];
+void angle_check(int mode);
 void pos_check(int mode);
 void ac_motion(int need);
 void TT_motion(int32_t speed,int16_t dir,int32_t angle);
