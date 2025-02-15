@@ -28,6 +28,7 @@
 #include "../BSP/42-dev/Emm_V5.h"
 #include "../BSP/DWT/dwt.h"
 #include "../BSP/Control/control.h"
+#include "../move/move/move.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -139,12 +140,8 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-      con_motion(0,0,0,0);
-      dwt_delay_ms(3000);
-      con_motion(0,0,1,0);
-      dwt_delay_ms(3000);
+    main_move();
 
-      osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
 }
