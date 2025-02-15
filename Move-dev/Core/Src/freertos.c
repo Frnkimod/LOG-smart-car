@@ -140,7 +140,19 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    main_move();
+      Emm_V5Control(&RU,0,0,0);
+      Emm_V5Control(&LU,1,0,0);
+      Emm_V5Control(&RL,1,0,0);
+      Emm_V5Control(&LL,0,0,0);
+      HAL_Delay(5000);
+      Emm_V5Control(&RU,1,0,0);
+      Emm_V5Control(&LU,0,0,0);
+      Emm_V5Control(&RL,0,0,0);
+      Emm_V5Control(&LL,1,0,0);
+      HAL_Delay(5000);
+
+      osDelay(1);
+
   }
   /* USER CODE END StartDefaultTask */
 }

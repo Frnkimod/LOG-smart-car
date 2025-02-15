@@ -71,12 +71,12 @@ void ac_motion(int need) // 分级调速，加减速与停止
 
 void check_line_Init()//内部参数初始化
 {
-    for (int i = 0; i < sizeof(BOUNDARY_VALUE); i++) {
-        BOUNDARY_VALUE[i]=0;
-    }
-    for (int i = 0; i < sizeof (QR_NUM); i++) {
-        QR_NUM[i]=0;
-    }
+//    for (int i = 0; i < sizeof(BOUNDARY_VALUE); i++) {
+//        BOUNDARY_VALUE[i]=0;
+//    }
+//    for (int i = 0; i < sizeof (QR_NUM); i++) {
+//        QR_NUM[i]=0;
+//    }
 }
 void TT_motion(int32_t speed,int16_t dir,int32_t angle)//控制机械臂运动
 {
@@ -86,7 +86,7 @@ void TT_motion(int32_t speed,int16_t dir,int32_t angle)//控制机械臂运动
 }
 float BOUNDARY_RATE(int flag) // 车身边距比例
 {
-    return BOUNDARY_VALUE[flag ? 0 : 1] / BOUNDARY_VALUE[flag ? 2 : 3];
+    //return BOUNDARY_VALUE[flag ? 0 : 1] / BOUNDARY_VALUE[flag ? 2 : 3];
     //flag == 1 时取 [0] / [2]，否则取 [1] / [3]
 }
 void car_in_Init()//小车进场
