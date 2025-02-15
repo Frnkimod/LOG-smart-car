@@ -141,7 +141,6 @@ void StartDefaultTask(void const * argument)
   for(;;)
   {
     main_move();
-
   }
   /* USER CODE END StartDefaultTask */
 }
