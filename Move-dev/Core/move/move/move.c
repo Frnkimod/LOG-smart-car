@@ -2,12 +2,14 @@
 // Author: Dereko
 // Date: 2025-02-13
 #include "move.h"
-#include <stdint.h>
+
 // Your C functions and implementation go here
 #include <stdint.h>
-
-#define WHEEL_CIRCUMFERENCE 235.5  // 轮子的周长 (mm)
-void move_motion(int32_t dir, int32_t circle){
+//WHEEL_CIRCUMFERENCE 235.5   轮子的周长 (mm)
+double calculate_circle(double distance) {
+    return distance * 1.414 / 2;
+}
+void move_motion(int32_t dir, double distance){
     switch (dir)
     {
         case 0:
@@ -28,11 +30,17 @@ void move_motion(int32_t dir, int32_t circle){
             RL.dir=0;
             LL.dir=0;
             break;
+        default:
+            // 默认情况下，设置所有电机速度为0，停止运动
+            RU.dir = LU.dir = RL.dir = LL.dir = 0;
+            set_motor_speed(0);  // 停止所有电机
+            break;
     }
-    RU.circle=circle;
-    LU.circle=circle;
-    RL.circle=circle;
-    LL.circle=circle;
+
+    RU.circle=calculate_circle(distance);
+    LU.circle=calculate_circle(distance);
+    RL.circle=calculate_circle(distance);
+    LL.circle=calculate_circle(distance);
 }
 void main_move() {
     move_motion(0, 20);  // 向前 20 圈

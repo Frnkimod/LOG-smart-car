@@ -6,7 +6,8 @@
 #define MOVE_H
 #include "../../Core/LG/check/check_line.h"
 // Your function prototypes and declarations go here
-void move_motion(int32_t dir, int32_t circle);
+void move_motion(int32_t dir, double distance);
 void main_move();
+double calculate_circle(double distance);
 void set_motor_speed(uint16_t speed);
 #endif // MOVE_H
