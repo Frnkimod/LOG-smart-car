@@ -17,14 +17,14 @@ void con_motion(int32_t speed,uint32_t dir,uint32_t distance)
         case 0:
             RU.dir=0;
             LU.dir=1;
-            RL.dir=0;
-            LL.dir=1;//前进
+            RL.dir=1;
+            LL.dir=0;//前进
             break;
         case 1:
             RU.dir=1;
             LU.dir=0;
-            RL.dir=1;
-            LL.dir=0;
+            RL.dir=0;
+            LL.dir=1;
             break;//后退
 
         case 2:
