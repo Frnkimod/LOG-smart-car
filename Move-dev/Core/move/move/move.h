@@ -7,7 +7,8 @@
 #include "../../Core/LG/check/check_line.h"
 // Your function prototypes and declarations go here
 void move_motion(int32_t dir, double distance);
-void main_move();
+void Emm_V5ControlX(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4, uint8_t dir, int32_t speed, double distance);
 double calculate_circle(double distance);
 void set_motor_speed(uint16_t speed);
+void main_move(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4);
 #endif // MOVE_H

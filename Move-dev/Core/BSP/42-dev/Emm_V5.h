@@ -21,8 +21,8 @@ typedef struct {
     int32_t angle;//转角(°)
     uint32_t dir;//轮子旋转方向 0顺1逆
     uint32_t delay_motion;//移动时长
-    int32_t distance;//运行距离
-    int32_t circle;
+    double distance;//运行距离
+    double circle;
 
 }Motor;
 

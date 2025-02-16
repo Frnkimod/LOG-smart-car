@@ -80,7 +80,7 @@ void Emm_V5Init()
  * @param       *motor:电机结构体指针 dir:方向(1为正,0为反) speed:速度(r/min) angle:角度(°)
  * @retval      无
  */
-void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
+    void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
 {
 
     int32_t steps=(int32_t)(angle/STPE_ANGLE);
@@ -100,6 +100,7 @@ void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
     //motor->speed=speed;//更新速度
     //motor->angle=angle;//更新角度
 }
+
 ///123
 void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
 {

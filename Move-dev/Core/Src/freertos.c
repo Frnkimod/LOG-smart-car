@@ -140,7 +140,8 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    main_move();
+      main_move(&RU,&LU,&RL,&LL);
+      return;
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -158,7 +159,7 @@ void StartLURL_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-      Emm_dir_PWM(&RL,&LL,&RU,&LU);
+      //Emm_dir_PWM(&RL,&LL,&RU,&LU);
       osDelay(1);
   }
   /* USER CODE END StartLURL_Task */
