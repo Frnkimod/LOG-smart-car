@@ -4,6 +4,7 @@
 
 #ifndef MOVE_H
 #define MOVE_H
+#include "../../BSP/42-dev/Emm_V5.h"
 #include "../../Core/LG/check/check_line.h"
 // Your function prototypes and declarations go here
 void move_motion(int32_t dir, double distance);

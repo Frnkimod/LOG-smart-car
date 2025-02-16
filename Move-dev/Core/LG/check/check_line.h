@@ -6,9 +6,9 @@
 
 #ifndef CHECK_LINE_H
 #define CHECK_LINE_H
-float BOUNDARY_VALUE[4];
+//float BOUNDARY_VALUE[4];
 float BOUNDARY_RATE(int flag);
-int QR_NUM[6];
+//int QR_NUM[6];
 void angle_check(int mode);
 void pos_check(int mode);
 void ac_motion(int need);

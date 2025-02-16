@@ -106,19 +106,20 @@ void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
 {
     int32_t steps=(int32_t)(360/STPE_ANGLE);
     int32_t cnt=(60*1000000)/(100*STPES_PER_REVOLUTION);
+    HAL_GPIO_WritePin(motor1->dev.IO_Dir.def,
+                      motor1->dev.IO_Dir.pin,
+                      motor1->dir);
+    HAL_GPIO_WritePin(motor2->dev.IO_Dir.def,
+                      motor2->dev.IO_Dir.pin,
+                      motor2->dir);
+    HAL_GPIO_WritePin(motor3->dev.IO_Dir.def,
+                      motor3->dev.IO_Dir.pin,
+                      motor3->dir);
+    HAL_GPIO_WritePin(motor4->dev.IO_Dir.def,
+                      motor4->dev.IO_Dir.pin,
+                      motor4->dir);
     for (;;) {
-        HAL_GPIO_WritePin(motor1->dev.IO_Dir.def,
-                          motor1->dev.IO_Dir.pin,
-                          motor1->dir);
-        HAL_GPIO_WritePin(motor2->dev.IO_Dir.def,
-                          motor2->dev.IO_Dir.pin,
-                          motor2->dir);
-        HAL_GPIO_WritePin(motor3->dev.IO_Dir.def,
-                          motor3->dev.IO_Dir.pin,
-                          motor3->dir);
-        HAL_GPIO_WritePin(motor4->dev.IO_Dir.def,
-                          motor4->dev.IO_Dir.pin,
-                          motor4->dir);
+
 
         HAL_GPIO_WritePin(motor1->dev.IO_Stp.def,motor1->dev.IO_Stp.pin,GPIO_PIN_SET);
         HAL_GPIO_WritePin(motor2->dev.IO_Stp.def,motor2->dev.IO_Stp.pin,GPIO_PIN_SET);
