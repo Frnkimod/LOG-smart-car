@@ -140,7 +140,13 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-      main_move(&RU,&LU,&RL,&LL);
+//      int max_speed =150; // 最大速度
+//      int acceleration_steps =4; // 加速和减速的步数
+//      linearMovement(&RU, &LU, &RL, &LL, 0, 1000, max_speed, acceleration_steps);
+//      HAL_Delay(3000);
+//      Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 3000, 30000);
+
+      move_main();
       return;
   }
   /* USER CODE END StartDefaultTask */

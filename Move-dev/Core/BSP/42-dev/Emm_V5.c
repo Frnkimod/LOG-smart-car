@@ -80,7 +80,7 @@ void Emm_V5Init()
  * @param       *motor:电机结构体指针 dir:方向(1为正,0为反) speed:速度(r/min) angle:角度(°)
  * @retval      无
  */
-    void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
+void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
 {
 
     int32_t steps=(int32_t)(angle/STPE_ANGLE);
@@ -142,12 +142,33 @@ void Emm_dir_PWM(Motor *motor1,Motor *motor2,Motor *motor3,Motor *motor4)
  */
 void Emm_PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt)
 {
-    for (int32_t i = 0; i < steps; i++) {
-        //GPIOA->BRR |=(1<<6);
-        HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_SET);
-        dwt_delay_us(cnt/2);
-        //GPIOA->BSRR |=(1<<6);
-        HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_RESET);
-        dwt_delay_us(cnt/2);
+    if (cnt==0)
+        return;
+    if (cnt/2<836)
+    {
+        for (int32_t i = 0; i < steps; i++) {
+            //GPIOA->BRR |=(1<<6);
+            HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_SET);
+            dwt_delay_us(cnt/2);
+            //GPIOA->BSRR |=(1<<6);
+            HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_RESET);
+            dwt_delay_us(cnt/2);
+        }
+    } else{
+        for (int32_t i = 0; i < steps; i++) {
+            HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_SET);
+
+            for (int32_t j = 0; j < ((cnt/2)/836); j++) {
+                dwt_delay_us(836);
+
+            }
+            dwt_delay_us(cnt/2-((cnt/2)/836));
+
+            HAL_GPIO_WritePin(io.def,io.pin,GPIO_PIN_RESET);
+            for (int32_t j = 0; j < ((cnt/2)/836); j++) {
+                dwt_delay_us(836);
+            }
+            dwt_delay_us(cnt/2-((cnt/2)/836));
+        }
     }
 }

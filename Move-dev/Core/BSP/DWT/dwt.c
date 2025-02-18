@@ -30,6 +30,8 @@ uint8_t dwt_init(void) {
 }
 
 void dwt_delay_us(volatile uint16_t us) {
+    if (us==0)
+        return;
     uint32_t au32_initial_ticks = DWT->CYCCNT;
     uint32_t au32_ticks = (HAL_RCC_GetHCLKFreq() / 1000000);
     us *= au32_ticks;
