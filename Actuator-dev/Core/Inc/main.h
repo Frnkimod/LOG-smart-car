@@ -57,6 +57,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define JJ_STP_Pin GPIO_PIN_12
+#define JJ_STP_GPIO_Port GPIOB
+#define JJ_DIR_Pin GPIO_PIN_13
+#define JJ_DIR_GPIO_Port GPIOB
 #define Servor_clip_Pin GPIO_PIN_8
 #define Servor_clip_GPIO_Port GPIOA
 #define Servor_flip_Pin GPIO_PIN_9
