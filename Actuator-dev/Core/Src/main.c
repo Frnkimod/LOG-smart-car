@@ -23,7 +23,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "../BSP/DWT/DWT.h"
+#include "../BSP/Servos-dev/Servos.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -91,13 +92,19 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
+  dwt_init();
+  Servos_Init();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-
+    Servo_SetAngle_270_1(0);
+    HAL_Delay(1000);
+    Servo_SetAngle_270_1(90);
+    HAL_Delay(1000);
+    Servo_SetAngle_270_1(180);
+    HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
