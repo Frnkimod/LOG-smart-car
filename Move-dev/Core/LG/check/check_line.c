@@ -83,7 +83,6 @@ void check_line_Init()//内部参数初始化
 }
 void TT_motion(Motor *tt,int32_t speed,int16_t dir,int32_t angle)//控制机械臂运动
 {
-
     int32_t steps = (int32_t)(angle*3200/360.0); // 将角度转换为步数
     int32_t cnt = (speed > 0) ? (60 * 1000000) / (speed * STPES_PER_REVOLUTION) : 0; // 计算PWM周期
 
