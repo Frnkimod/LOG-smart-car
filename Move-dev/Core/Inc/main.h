@@ -69,14 +69,14 @@ void Error_Handler(void);
 #define LU_STP_GPIO_Port GPIOB
 #define LU_DIR_Pin GPIO_PIN_13
 #define LU_DIR_GPIO_Port GPIOB
-#define TT_DIR_Pin GPIO_PIN_8
-#define TT_DIR_GPIO_Port GPIOA
-#define TT_STP_Pin GPIO_PIN_9
-#define TT_STP_GPIO_Port GPIOA
 #define RU_STP_Pin GPIO_PIN_6
 #define RU_STP_GPIO_Port GPIOB
 #define RU_DIR_Pin GPIO_PIN_7
 #define RU_DIR_GPIO_Port GPIOB
+#define TT_STP_Pin GPIO_PIN_8
+#define TT_STP_GPIO_Port GPIOB
+#define TT_DIR_Pin GPIO_PIN_9
+#define TT_DIR_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

@@ -12,7 +12,7 @@ float BOUNDARY_RATE(int flag);
 void angle_check(int mode);
 void pos_check(int mode);
 void ac_motion(int need);
-void TT_motion(int32_t speed,int16_t dir,int32_t angle);
+void TT_motion(Motor *tt,int32_t speed,int16_t dir,int32_t angle);
 void check_line_Init();
 void car_in_Init();
 

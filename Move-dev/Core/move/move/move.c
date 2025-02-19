@@ -92,6 +92,7 @@ void linearMovement(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, 
 }
 // 主程序
 int move_main() {
+
     // 设置最大速度和加速/减速步骤数
     int max_speed = 120; // 最大速度
     int acceleration_steps = 3; // 加速和减速的步数

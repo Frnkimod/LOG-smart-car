@@ -29,6 +29,8 @@
 #include "../BSP/DWT/dwt.h"
 #include "../BSP/Control/control.h"
 #include "../move/move/move.h"
+#include "../../Core/LG/check/check_line.h"
+#include "../../Core/TT_MOTION/TT/tt.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -140,13 +142,13 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-//      int max_speed =150; // 最大速度
-//      int acceleration_steps =4; // 加速和减速的步数
+//      int max_speed =150; // �?大�?�度
+//      int acceleration_steps =4; // 加�?�和减�?�的步数
 //      linearMovement(&RU, &LU, &RL, &LL, 0, 1000, max_speed, acceleration_steps);
 //      HAL_Delay(3000);
 //      Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 3000, 30000);
 
-      move_main();
+      TT_main();
       return;
   }
   /* USER CODE END StartDefaultTask */

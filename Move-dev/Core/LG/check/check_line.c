@@ -81,12 +81,14 @@ void check_line_Init()//内部参数初始化
 //        QR_NUM[i]=0;
 //    }
 }
-void TT_motion(int32_t speed,int16_t dir,int32_t angle)//控制机械臂运动
+void TT_motion(Motor *tt,int32_t speed,int16_t dir,int32_t angle)//控制机械臂运动
 {
-  TT.speed=speed;
-  TT.dir=dir;
-  TT.angle=angle;
+    int32_t steps = (int32_t)(angle*3200/360.0); // 将角度转换为步数
+    int32_t cnt = (speed > 0) ? (60 * 1000000) / (speed * STPES_PER_REVOLUTION) : 0; // 计算PWM周期
 
+    TT.speed=speed;
+    TT.dir=dir;
+  Emm_PWM_OUT(tt->dev.IO_Stp, steps, cnt);
 }
 float BOUNDARY_RATE(int flag) // 车身边距比例
 {
@@ -95,7 +97,7 @@ float BOUNDARY_RATE(int flag) // 车身边距比例
 }
 void car_in_Init()//小车进场
 {
-    TT_motion(20,0,0);
+    TT_motion(&TT,100,0,0);
     angle_check(1);
     pos_check(1);
 }
