@@ -56,14 +56,17 @@ void pos_check(int mode) // 车身距位置校验
 }
 void ac_motion(int need) // 分级调速，加减速与停止
 {
-    int values[][3] = {
+    int values[][3] =
+     {
             {20, 15, 10}, // need == 0（缓减速）
             {10, 15, 20}, // need == 1（缓加速）
             {20, 10,  0}  // need == 2（缓停止）
-    };
+     };
 
-    if (need >= 0 && need <= 2) {
-        for (int i = 0; i < 3; i++) {
+    if (need >= 0 && need <= 2)
+    {
+        for (int i = 0; i < 3; i++)
+        {
             con_motion(values[need][i],0,1000);
         }
     }
@@ -83,6 +86,7 @@ void TT_motion(int32_t speed,int16_t dir,int32_t angle)//控制机械臂运动
   TT.speed=speed;
   TT.dir=dir;
   TT.angle=angle;
+
 }
 float BOUNDARY_RATE(int flag) // 车身边距比例
 {
