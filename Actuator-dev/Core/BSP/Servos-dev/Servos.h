@@ -14,7 +14,8 @@ typedef struct {
 extern Servos turntable;
 // Your function prototypes and declarations go here
 void Servos_Init(void);
-void Servos_PWM_OUT();
-void Servos_Control();
-
+void Servo_SetAngle_270_1(uint16_t angle);//翻转舵机
+void Servo_SetAngle_270_2(uint16_t angle);//转盘舵机
+void Servo_SetAngle_180(uint16_t angle);
+void control_servo(int direction);
 #endif // SERVOS_H
