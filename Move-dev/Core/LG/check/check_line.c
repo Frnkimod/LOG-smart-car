@@ -96,6 +96,7 @@ float BOUNDARY_RATE(int flag) // 车身边距比例
 }
 void car_in_Init()//小车进场
 {
+
     con_motion(60,3,50);
     angle_check(1);
     pos_check(1);
