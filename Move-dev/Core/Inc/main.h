@@ -61,6 +61,8 @@ void Error_Handler(void);
 #define LL_DIR_GPIO_Port GPIOA
 #define LL_STP_Pin GPIO_PIN_1
 #define LL_STP_GPIO_Port GPIOA
+#define FLAG_OUT_Pin GPIO_PIN_2
+#define FLAG_OUT_GPIO_Port GPIOA
 #define RL_STP_Pin GPIO_PIN_10
 #define RL_STP_GPIO_Port GPIOB
 #define RL_DIR_Pin GPIO_PIN_11
@@ -69,6 +71,8 @@ void Error_Handler(void);
 #define LU_STP_GPIO_Port GPIOB
 #define LU_DIR_Pin GPIO_PIN_13
 #define LU_DIR_GPIO_Port GPIOB
+#define FLAG_IN_Pin GPIO_PIN_5
+#define FLAG_IN_GPIO_Port GPIOB
 #define RU_STP_Pin GPIO_PIN_6
 #define RU_STP_GPIO_Port GPIOB
 #define RU_DIR_Pin GPIO_PIN_7
