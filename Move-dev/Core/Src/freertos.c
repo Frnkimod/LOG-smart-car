@@ -163,10 +163,10 @@ void StartDefaultTask(void const * argument)
           {
 
               if (x<T_X&&abs(x-T_X)>2) {
-                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 600, 1000);
+                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 1, 600, 1000);
               }else if(x>T_X&&abs(x-T_X)>2) {
 
-                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 1, 600, 1000);
+                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 600, 1000);
               }
 
               // PID控制
