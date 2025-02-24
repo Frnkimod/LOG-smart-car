@@ -142,7 +142,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-//      int max_speed =150; // �?大�?�度
+//      int max_speed =150; // �??大�?�度
 //      int acceleration_steps =4; // 加�?�和减�?�的步数
 //      linearMovement(&RU, &LU, &RL, &LL, 0, 1000, max_speed, acceleration_steps);
 //      HAL_Delay(3000);
