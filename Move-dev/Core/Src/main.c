@@ -17,15 +17,12 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <stdlib.h>
 #include "main.h"
 #include "cmsis_os.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "stdio.h"
-#include "../Inc/main.h"
-#include "../move/move/move.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -94,7 +91,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM3_Init();
-
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -113,14 +110,8 @@ int main(void)
   {
 
 
-
   }
 }
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-
-  /* USER CODE END 3 */
 
 
 /**
