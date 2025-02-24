@@ -1,9 +1,10 @@
 // move.h
 // Author: Dereko
 // Date: 2025-02-13
-
+#define   T_X  330
 #ifndef MOVE_H
 #define MOVE_H
+#define  T_X 50
 #include "../../BSP/42-dev/Emm_V5.h"
 #include "../../Core/LG/check/check_line.h"
 // Your function prototypes and declarations go here
