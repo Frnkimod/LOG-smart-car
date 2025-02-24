@@ -87,18 +87,6 @@ void take_check(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4,int32
             motor3->dir = 0;
             motor4->dir = 1;
             break;
-        case 2:
-            RU.dir=0;
-            LU.dir=0;
-            RL.dir=1;
-            LL.dir=1;//右
-
-        case 3:
-            RU.dir=1;
-            LU.dir=1;
-            RL.dir=0;
-            LL.dir=0;//左
-
 
         default:
             motor1->dir = motor2->dir =motor3->dir = motor4->dir = 0;
@@ -115,12 +103,10 @@ void take_check(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4,int32
 void take_move(int32_t mit){
     if(mit==1)//车身需要后退一个身位
     {
-        take_check(&RU, &LU, &RL, &LL,3,100,cam_dis);
         take_check(&RU, &LU, &RL, &LL,1,50,cam_dis);
     }
     else if(mit==0)//车身需要前进一个身位
     {
-        take_check(&RU, &LU, &RL, &LL,2,100,cam_dis);
         take_check(&RU, &LU, &RL, &LL,0,50,cam_dis);
     }
 }
