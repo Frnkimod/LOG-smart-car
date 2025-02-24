@@ -147,34 +147,30 @@ void StartDefaultTask(void const * argument)
 //      int max_speed =150; // �???大�?�度
 //      int acceleration_steps =4; // 加�?�和减�?�的步数
 //      linearMovement(&RU, &LU, &RL, &LL, 0, 1000, max_speed, acceleration_steps);
-//      HAL_Delay(3000);
-//      Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 3000, 30000);
-      Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 600, 100);
-
-      //TT_main();
-      uint8_t rx_buffer[100];
-      int x, y, r;
-
-      // 接收数据
-      if (HAL_UART_Receive(&huart1, rx_buffer, sizeof(rx_buffer), 1000) == HAL_OK)
-      {
-          // 解析数据
-          if (sscanf((char*)rx_buffer, "%d,%d,%d", &x, &y, &r) == 3)
-          {
-
-              if (x<T_X&&abs(x-T_X)>2) {
-                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 1, 600, 1000);
-              }else if(x>T_X&&abs(x-T_X)>2) {
-
-                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 600, 1000);
-              }
-
-              // PID控制
-              // 这里�?要根据你的PID控制算法来调整小车的运动
-              // 例如，根据x, y计算出需要调整的方向和�?�度
-          }
-      }
+////      HAL_Delay(3000);
+////      Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 3000, 30000);
+//      Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 600, 100);
+//      //TT_main();
+//      uint8_t rx_buffer[100];
+//      int x, y, r;
+//      // 接收数据
+//      if (HAL_UART_Receive(&huart1, rx_buffer, sizeof(rx_buffer), 1000) == HAL_OK)
+//      {
+//          // 解析数据
+//          if (sscanf((char*)rx_buffer, "%d,%d,%d", &x, &y, &r) == 3)
+//          {
+//
+//              if (x<T_X&&abs(x-T_X)>2) {
+//                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 1, 600, 1000);
+//              }else if(x>T_X&&abs(x-T_X)>2) {
+//
+//                  Emm_V5ControlX(&RU, &LU, &RL, &LL, 0, 600, 1000);
+//              }
+//          }
+//      }
+move_main();
       osDelay(1);
+      return ;
 
   }
   /* USER CODE END StartDefaultTask */
