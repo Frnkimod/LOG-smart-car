@@ -59,6 +59,10 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define FLAG_INPUT_Pin GPIO_PIN_2
 #define FLAG_INPUT_GPIO_Port GPIOA
+#define KK_STP_Pin GPIO_PIN_1
+#define KK_STP_GPIO_Port GPIOB
+#define KK_DIR_Pin GPIO_PIN_2
+#define KK_DIR_GPIO_Port GPIOB
 #define JJ_STP_Pin GPIO_PIN_12
 #define JJ_STP_GPIO_Port GPIOB
 #define JJ_DIR_Pin GPIO_PIN_13
