@@ -170,7 +170,7 @@ int move_main() {
 
 
     // 向前到拐角
-    linearMovement(&RU, &LU, &RL, &LL, 5, 147, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 5, 145, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    angle_check()
 
@@ -203,7 +203,7 @@ int move_main() {
 //    pos_check()
 
     // 向前到暂存区
-    linearMovement(&RU, &LU, &RL, &LL, 0, 465, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 455, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
 
@@ -225,7 +225,7 @@ int move_main() {
     HAL_Delay(1000);
     //    angle_check()
     // 调头
-    linearMovement(&RU, &LU, &RL, &LL, 0, 162, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 172, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
 
@@ -271,8 +271,6 @@ int move_main() {
     linearMovement(&RU, &LU, &RL, &LL, 0, 415, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
-    TT_motion(&TT,4000,1,360);//左转tt暂存物料
-    HAL_Delay(10);
 
     // 向前到暂存区
 
@@ -289,11 +287,11 @@ int move_main() {
     // 右转
     linearMovement(&RU, &LU, &RL, &LL, 0, 575, max_speed, acceleration_steps);
     HAL_Delay(10);
-    linearMovement(&RU, &LU, &RL, &LL, 5, 15, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 5, 20, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
 //    angle_check()
-    linearMovement(&RU, &LU, &RL, &LL, 0, 245, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 250, max_speed, acceleration_steps);
     HAL_Delay(10);
 
     // 停止所有电机
