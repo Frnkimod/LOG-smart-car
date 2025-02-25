@@ -130,7 +130,6 @@ int main(void)
 //              if (rx_buffer[0] == '1'||rx_buffer[0] == '2'||rx_buffer[0] == '3'){//1 是红色 2是绿色 3是蓝色
 //                 scanf((char*)rx_buffer, "%d", &A[i]);
 //                  i++;
-
                   if (rx_buffer[0] == '1' || rx_buffer[0] == '2' || rx_buffer[0] == '3') {
                       A[i] = atoi((char*)rx_buffer);  // 把rx_buffer转换成整数存入A[i]
                       i++;
