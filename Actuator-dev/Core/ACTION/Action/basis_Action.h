@@ -13,6 +13,7 @@ void Turntable_spin_3(void);//转到转盘3  --- 240°
 void catching_catch(void);//爪子抓住  ---90°
 void catching_flip(void);//翻转--180°
 void catching_flip_init(void);// 翻转复位
+void  catching_flip_watch(void);//反转到视觉捕捉
 void catching_catch_to_release(void);//抓盘抓取到释放
 
 

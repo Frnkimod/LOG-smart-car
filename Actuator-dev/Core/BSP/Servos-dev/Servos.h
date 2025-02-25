@@ -4,6 +4,13 @@
 
 #ifndef SERVOS_H
 #define SERVOS_H
+
+#define T_X 330
+#define T_Y 230
+#define T_R 145
+
+
+
 #include "../BSP_conf.h"
 typedef struct {
     gpio_Conf dev;//设备IO口信息

@@ -137,46 +137,23 @@ void linearMovement(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, 
     // 停止电机
     Emm_V5ControlX(motor1, motor2, motor3, motor4, dir, 0, 0);
 }
-void wait_xl()
-{
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
-    HAL_Delay(100);
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
-
-
-    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
-}
 // 主程序
 int move_main() {
 
     // 设置最大速度和加速/减速步骤数
-    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
-    HAL_Delay(100);
     int max_speed = 120; // 最大速度
     int acceleration_steps = 3; // 加速和减速的步数
     linearMovement(&RU, &LU, &RL, &LL, 0, 275, max_speed, acceleration_steps);
     HAL_Delay(10);
     TT_motion(&TT,4000,0,360);//tt向右旋转90度扫码
     HAL_Delay(1000);
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
-    HAL_Delay(100);
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
-    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
-    HAL_Delay(100);
-
     // 到扫码区扫码
     linearMovement(&RU, &LU, &RL, &LL, 0, 405, max_speed, acceleration_steps);
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
-    HAL_Delay(100);
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
-    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
-    HAL_Delay(100);
-
+    HAL_Delay(10);
     //   pos_check()
     // 到物料区夹取物料
     linearMovement(&RU, &LU, &RL, &LL, 0, 185, max_speed, acceleration_steps);
-
-
+    HAL_Delay(10);
 //    pos_check()
 
 
