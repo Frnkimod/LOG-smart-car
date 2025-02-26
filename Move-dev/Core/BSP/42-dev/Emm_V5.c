@@ -84,7 +84,7 @@ void Emm_V5Control(Motor *motor,uint8_t dir,int32_t speed,int32_t angle)
 {
 
     int32_t steps=(int32_t)(angle/STPE_ANGLE);
-    int32_t cnt=(60*1000000)/(speed*STPES_PER_REVOLUTION);
+        int32_t cnt=(60*1000000)/(speed*STPES_PER_REVOLUTION);
     if (dir==1)
     {
         HAL_GPIO_WritePin(motor->dev.IO_Dir.def,
@@ -170,5 +170,16 @@ void Emm_PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt)
             }
             dwt_delay_us(cnt/2-((cnt/2)/836));
         }
+    }
+}
+void Emm_dir(int32_t value)
+{
+    if (value>0)
+    {
+
+    } else if (value<0){
+
+    } else{
+        return;
     }
 }

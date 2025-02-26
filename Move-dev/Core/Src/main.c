@@ -22,12 +22,16 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "../BSP/Control/control.h"
 #include "../move/move/move.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "../BSP/42-dev/Emm_V5.h"
+#include "../BSP/DWT/dwt.h"
+#include "../BSP/Control/control.h"
+#include "../move/move/move.h"
+#include "../../Core/LG/check/check_line.h"
+#include "../../Core/TT_MOTION/TT/tt.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,9 +99,11 @@ int main(void)
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-    Emm_V5Init();
-    con_init();
-  /* USER CODE END 2 */
+  dwt_init();
+  Emm_V5Init();
+  con_init();
+
+    /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
   //MX_FREERTOS_Init();
@@ -111,8 +117,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
       move_main();
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
