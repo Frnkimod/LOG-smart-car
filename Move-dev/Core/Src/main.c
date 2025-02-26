@@ -22,10 +22,16 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "../move/move/move.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "../BSP/42-dev/Emm_V5.h"
+#include "../BSP/DWT/dwt.h"
+#include "../BSP/Control/control.h"
+#include "../move/move/move.h"
+#include "../../Core/LG/check/check_line.h"
+#include "../../Core/TT_MOTION/TT/tt.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -91,16 +97,19 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM3_Init();
-//  MX_USART1_UART_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  dwt_init();
+  Emm_V5Init();
+  con_init();
 
-  /* USER CODE END 2 */
+    /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
+  //MX_FREERTOS_Init();
 
   /* Start scheduler */
-  osKernelStart();
+  //osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
 
@@ -108,11 +117,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+      move_main();
+    /* USER CODE END WHILE */
 
-
+    /* USER CODE BEGIN 3 */
   }
+  /* USER CODE END 3 */
 }
-
 
 /**
   * @brief System Clock Configuration

@@ -1,7 +1,9 @@
 // Control.c
-// Author: Dereko
+// Author: Dereko/Franki
 // Date: 2025-01-10
 #include "Control.h"
+
+
 
 
 

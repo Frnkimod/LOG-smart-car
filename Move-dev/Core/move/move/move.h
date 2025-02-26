@@ -1,7 +1,7 @@
 // move.h
 // Author: Dereko
 // Date: 2025-02-13
-#define   T_X  320
+
 #ifndef MOVE_H
 #define MOVE_H
 #define  T_X 50
