@@ -149,10 +149,24 @@ void linearMovement(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, 
     Emm_V5ControlX(motor1, motor2, motor3, motor4, dir, 0, 0);
 }
 void tt_right(){
-    TT_motion(&TT,4000,0,180);
+    TT_motion(&TT,4000,0,180);//放置左边孔位
+    HAL_Delay(1000);
+    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port, FLAG_IN_Pin));
+    //等待
+    TT_motion(&TT,4000,1,180);//回到中心
+    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
 }
 void tt_left(){
-    TT_motion(&TT,4000,1,180);
+    TT_motion(&TT,4000,1,180);//放置右边孔位
+    HAL_Delay(1000);
+    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port, FLAG_IN_Pin));
+    //等待
+    TT_motion(&TT,4000,0,180);//回到中心
+    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
 }
 // 主程序
 int move_main() {
