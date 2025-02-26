@@ -49,15 +49,15 @@ Emm_V5ControlX(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, uint8
             motor4->dir = 0;
             break;
         case 3:
-            RU.dir=1;
-            LU.dir=1;
-            RL.dir=0;
-            LL.dir=0;//左
+            motor1->dir=1;
+            motor2->dir=1;
+            motor3->dir=0;
+            motor4->dir=0;//左
         case 2:
-            RU.dir=0;
-            LU.dir=0;
-            RL.dir=1;
-            LL.dir=1;//右
+            motor1->dir=0;
+            motor2->dir=0;
+            motor3->dir=1;
+            motor4->dir=1;//右
         case 5: //原地逆时针
             motor1->dir = 1;
             motor2->dir = 1;
@@ -147,6 +147,12 @@ void linearMovement(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, 
     }
     // 停止电机
     Emm_V5ControlX(motor1, motor2, motor3, motor4, dir, 0, 0);
+}
+void tt_right(){
+    TT_motion(&TT,4000,0,180);
+}
+void tt_left(){
+    TT_motion(&TT,4000,1,180);
 }
 // 主程序
 int move_main() {
@@ -268,7 +274,6 @@ int move_main() {
     linearMovement(&RU, &LU, &RL, &LL, 0, 385, max_speed, acceleration_steps);
     HAL_Delay(100);
 //    pos_check()
-
     // 向前到拐角
     linearMovement(&RU, &LU, &RL, &LL, 4, 143, max_speed, acceleration_steps);
     HAL_Delay(10);
