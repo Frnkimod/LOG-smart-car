@@ -15,7 +15,8 @@ double calculate_circle(double distance) {
 }
 
 // 控制电机运动的函数
-void Emm_V5ControlX(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, uint8_t dir, int32_t speed, double distance) {
+void
+Emm_V5ControlX(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, uint8_t dir, int32_t speed, double distance) {
     if (speed == 0) { // 如果速度为0，停止电机
         set_motor_speed(0);
         Emm_PWM_OUT(motor1->dev.IO_Stp, 0, 0);
@@ -35,19 +36,29 @@ void Emm_V5ControlX(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, 
             motor3->dir = 1;
             motor4->dir = 0;
             break;
-        case 1:
+        case 1://后退
             motor1->dir = 1;
             motor2->dir = 0;
             motor3->dir = 0;
             motor4->dir = 1;
             break;
-        case 4: // 后退
+        case 4: //原地顺时针
             motor1->dir = 0;
             motor2->dir = 0;
             motor3->dir = 0;
             motor4->dir = 0;
             break;
-        case 5: // 前进
+        case 3:
+            RU.dir=1;
+            LU.dir=1;
+            RL.dir=0;
+            LL.dir=0;//左
+        case 2:
+            RU.dir=0;
+            LU.dir=0;
+            RL.dir=1;
+            LL.dir=1;//右
+        case 5: //原地逆时针
             motor1->dir = 1;
             motor2->dir = 1;
             motor3->dir = 1;
