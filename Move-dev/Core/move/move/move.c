@@ -219,7 +219,7 @@ int move_main() {
     HAL_Delay(10);
 //    angle_check()
     // 左转
-    linearMovement(&RU, &LU, &RL, &LL, 0, 350, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 370, max_speed, acceleration_steps);
     HAL_Delay(10);
     PID_Angle_Check();
     PID_Pos_Check();
@@ -234,7 +234,7 @@ int move_main() {
     HAL_Delay(1000);
 //    angle_check()
     // 调头
-    linearMovement(&RU, &LU, &RL, &LL, 0, 390, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 410, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
 
@@ -293,7 +293,7 @@ int move_main() {
     HAL_Delay(10);
 //    angle_check()
     // 左转
-    linearMovement(&RU, &LU, &RL, &LL, 0, 375, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 395, max_speed, acceleration_steps);
     HAL_Delay(10);
     PID_Angle_Check();
     PID_Pos_Check();
@@ -308,7 +308,7 @@ int move_main() {
     HAL_Delay(10);
 //    angle_check()
     // 调头
-    linearMovement(&RU, &LU, &RL, &LL, 0, 385, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 405, max_speed, acceleration_steps);
     HAL_Delay(100);
 //    pos_check()
     // 向前到拐角
