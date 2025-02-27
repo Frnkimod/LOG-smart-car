@@ -15,4 +15,6 @@ double calculate_circle(double distance);
 void set_motor_speed(uint16_t speed);
 void linearMovement(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, uint8_t dir, double distance, int max_speed, int acceleration_steps);
 int  move_main();
+void Emm_x(int value);
+void Emm_y(int value);
 #endif // MOVE_H

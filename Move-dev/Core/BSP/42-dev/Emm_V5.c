@@ -3,8 +3,10 @@
 *** Emm_v5 42步进电机脉冲驱动具体函数实现
 **********************************************************/
 
+#include <stdlib.h>
 #include "Emm_V5.h"
 #include "../DWT/dwt.h"
+#define WHEEL_CIRCUMFERENCE 235.5
 Motor RU={
         .dev={
                 .IO_Stp={RU_STP_TYPE,RU_STP_PIN},
@@ -172,14 +174,55 @@ void Emm_PWM_OUT(gpio_Conf io,int32_t steps,int32_t cnt)
         }
     }
 }
-void Emm_dir(int32_t value)
+void Emm_PWM_OUT_new(int32_t steps,int32_t cnt)
 {
-    if (value>0)
-    {
-
-    } else if (value<0){
-
-    } else{
-        return;
+    for (int32_t i = 0; i < steps; i++) {
+        //GPIOA->BRR |=(1<<6);
+        HAL_GPIO_WritePin(RU_STP_GPIO_Port,RU_STP_Pin,GPIO_PIN_SET);
+        dwt_delay_us(cnt);
+        //GPIOA->BSRR |=(1<<6);
+        HAL_GPIO_WritePin(RU_STP_GPIO_Port,RU_STP_Pin,GPIO_PIN_RESET);
+        dwt_delay_us(cnt);
     }
+}
+void Emm_dir(int value)
+{
+    int32_t steps = (int32_t)(abs(value)*3200/360.0); // 将角度转换为步数
+    int32_t cnt = ((60 * 1000000) / (3200 * 100)) ; // 计算PWM周期 转速20r/min
+    HAL_GPIO_WritePin(RU_DIR_GPIO_Port, RU_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LU_DIR_GPIO_Port, LU_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LL_DIR_GPIO_Port, LL_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(RL_DIR_GPIO_Port, RL_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+
+    // 产生步进信号
+    Emm_PWM_OUT_new(steps, cnt);
+    return;
+}
+void Emm_x(int value)
+{
+    int32_t angle = (int32_t)((abs(value) / WHEEL_CIRCUMFERENCE) * 360); // 将距离转换为角度
+    int32_t steps = (int32_t)(angle*3200/360.0); // 将角度转换为步数
+    int32_t cnt = ((60 * 1000000) / (3200 * 20)) ; // 计算PWM周期 转速20r/min
+    HAL_GPIO_WritePin(RU_DIR_GPIO_Port, RU_DIR_Pin, value < 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LU_DIR_GPIO_Port, LU_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(RL_DIR_GPIO_Port, RL_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LL_DIR_GPIO_Port, LL_DIR_Pin, value < 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+
+    // 产生步进信号
+    Emm_PWM_OUT_new(steps, cnt);
+    return;
+}
+void Emm_y(int value)
+{
+    int32_t angle = (int32_t)((abs(value) / WHEEL_CIRCUMFERENCE) * 360); // 将距离转换为角度
+    int32_t steps = (int32_t)(angle*3200/360.0); // 将角度转换为步数
+    int32_t cnt = ((60 * 1000000) / (3200 * 20)) ; // 计算PWM周期 转速20r/min
+    HAL_GPIO_WritePin(RU_DIR_GPIO_Port, RU_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LU_DIR_GPIO_Port, LU_DIR_Pin, value > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LL_DIR_GPIO_Port, LL_DIR_Pin, value < 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(RL_DIR_GPIO_Port, RL_DIR_Pin, value < 0 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+
+    // 产生步进信号
+    Emm_PWM_OUT_new(steps, cnt);
+    return;
 }
