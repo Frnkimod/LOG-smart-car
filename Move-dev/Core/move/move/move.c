@@ -149,6 +149,7 @@ void linearMovement(Motor *motor1, Motor *motor2, Motor *motor3, Motor *motor4, 
     Emm_V5ControlX(motor1, motor2, motor3, motor4, dir, 0, 0);
 }
 void tt_right(){
+
     TT_motion(&TT,4000,0,180);//放置左边孔位
     HAL_Delay(1000);
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
