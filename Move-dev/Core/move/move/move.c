@@ -162,7 +162,6 @@ void tt_right(){
 }
 void tt_left(){
     TT_motion(&TT,4000,1,180);//放置右边孔位
-    HAL_Delay(1000);
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
     HAL_Delay(100);
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
@@ -205,9 +204,6 @@ int move_main() {
     HAL_Delay(10);
     //   pos_check()
     // 到物料区夹取物料
-
-
-
     linearMovement(&RU, &LU, &RL, &LL, 0, 195, max_speed, acceleration_steps);
     HAL_Delay(10);
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
@@ -216,31 +212,25 @@ int move_main() {
     while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
     HAL_Delay(10);
     // 向前到拐角
-
-
     linearMovement(&RU, &LU, &RL, &LL, 5, 130, max_speed, acceleration_steps);
     HAL_Delay(10);
 
     //    angle_check()
-
     // 左转
     linearMovement(&RU, &LU, &RL, &LL, 0, 850, max_speed, acceleration_steps);
     HAL_Delay(10);
     //    pos_check()
-
-
     // 向前到拐角
     linearMovement(&RU, &LU, &RL, &LL, 5, 145, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    angle_check()
-
     // 左转
     linearMovement(&RU, &LU, &RL, &LL, 0, 380, max_speed, acceleration_steps);
     HAL_Delay(10);
+    tt_left();
+    tt_right();
 //    pos_check()
-
     // 到加工区
-
     linearMovement(&RU, &LU, &RL, &LL, 5, 275, max_speed, acceleration_steps);
     HAL_Delay(10);
     TT_motion(&TT,4000,1,720);//tt换向
@@ -259,20 +249,25 @@ int move_main() {
     // 右转
     linearMovement(&RU, &LU, &RL, &LL, 0, 425, max_speed, acceleration_steps);
     HAL_Delay(10);
-//    pos_check()
+    tt_left();
+    tt_right();
+    //    pos_check()
 
     // 向前到暂存区
     linearMovement(&RU, &LU, &RL, &LL, 0, 420, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
-
     // 向前到拐角
     linearMovement(&RU, &LU, &RL, &LL, 4, 135, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    angle_check()
-
     // 右转
     linearMovement(&RU, &LU, &RL, &LL, 0, 200, max_speed, acceleration_steps);
+    HAL_Delay(10);
+    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
+    HAL_Delay(10);
+    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
+    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
     HAL_Delay(10);
 //    pos_check()
     // 向前到物料区
@@ -285,35 +280,30 @@ int move_main() {
     linearMovement(&RU, &LU, &RL, &LL, 0, 190, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
-
     // 向前到拐角
     linearMovement(&RU, &LU, &RL, &LL, 5, 125, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    angle_check()
-
     // 左转
     linearMovement(&RU, &LU, &RL, &LL, 0, 850, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    pos_check()
-
     // 向前到拐角
     linearMovement(&RU, &LU, &RL, &LL, 5, 143, max_speed, acceleration_steps);
     HAL_Delay(10);
 //    angle_check()
-
     // 左转
     linearMovement(&RU, &LU, &RL, &LL, 0, 375, max_speed, acceleration_steps);
     HAL_Delay(10);
+    tt_left();
+    tt_right();
 //    pos_check()
-
     // 向前到加工区
-
     linearMovement(&RU, &LU, &RL, &LL, 5, 285, max_speed, acceleration_steps);
     HAL_Delay(10);
     TT_motion(&TT,4000,1,720);
     HAL_Delay(10);
 //    angle_check()
-
     // 调头
     linearMovement(&RU, &LU, &RL, &LL, 0, 385, max_speed, acceleration_steps);
     HAL_Delay(100);
@@ -325,10 +315,10 @@ int move_main() {
     // 右转
     linearMovement(&RU, &LU, &RL, &LL, 0, 425, max_speed, acceleration_steps);
     HAL_Delay(10);
+    tt_left();
+    tt_right();
 //    pos_check()
-
     // 向前到暂存区
-
     linearMovement(&RU, &LU, &RL, &LL, 0, 440, max_speed, acceleration_steps);
     HAL_Delay(10);
     TT_motion(&TT,4000,0,360);
