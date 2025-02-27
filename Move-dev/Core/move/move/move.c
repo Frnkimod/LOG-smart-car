@@ -219,7 +219,7 @@ int move_main() {
     HAL_Delay(10);
 //    angle_check()
     // 左转
-    linearMovement(&RU, &LU, &RL, &LL, 0, 380, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 350, max_speed, acceleration_steps);
     HAL_Delay(10);
     PID_Angle_Check();
     PID_Pos_Check();
@@ -244,7 +244,7 @@ int move_main() {
 //    angle_check()
 
     // 右转
-    linearMovement(&RU, &LU, &RL, &LL, 0, 425, max_speed, acceleration_steps);
+    linearMovement(&RU, &LU, &RL, &LL, 0, 395, max_speed, acceleration_steps);
     HAL_Delay(10);
     PID_Angle_Check();
     PID_Pos_Check();
@@ -297,9 +297,6 @@ int move_main() {
     HAL_Delay(10);
     tt_left();
     tt_right();
-    PID_Angle_Check();
-    PID_Pos_Check();
-    linearMovement(&RU, &LU, &RL, &LL, 1, 20, max_speed, acceleration_steps);
 //    pos_check()
     // 向前到加工区
     linearMovement(&RU, &LU, &RL, &LL, 5, 285, max_speed, acceleration_steps);
@@ -318,9 +315,6 @@ int move_main() {
     // 右转
     linearMovement(&RU, &LU, &RL, &LL, 0, 425, max_speed, acceleration_steps);
     HAL_Delay(10);
-    PID_Angle_Check();
-    PID_Pos_Check();
-    linearMovement(&RU, &LU, &RL, &LL, 1, 20, max_speed, acceleration_steps);
     tt_left();
     tt_right();
 //    pos_check()
