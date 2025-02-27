@@ -160,13 +160,13 @@ void tt_right(){
 
 }
 void tt_left(){
-    TT_motion(&TT,4000,1,120);//放置右边孔位
+    TT_motion(&TT,4000,1,150);//放置右边孔位
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
     HAL_Delay(100);
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
     while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port, FLAG_IN_Pin));
     //等待
-    TT_motion(&TT,4000,0,120);//回到中心
+    TT_motion(&TT,4000,0,150);//回到中心
 
 }
 // 主程序
