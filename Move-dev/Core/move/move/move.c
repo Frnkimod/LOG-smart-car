@@ -160,13 +160,13 @@ void tt_right(){
 
 }
 void tt_left(){
-    TT_motion(&TT,4000,1,180);//放置右边孔位
+    TT_motion(&TT,4000,1,120);//放置右边孔位
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
     HAL_Delay(100);
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
     while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port, FLAG_IN_Pin));
     //等待
-    TT_motion(&TT,4000,0,180);//回到中心
+    TT_motion(&TT,4000,0,120);//回到中心
 
 }
 // 主程序
@@ -205,11 +205,6 @@ int move_main() {
     // 到物料区夹取物料
     linearMovement(&RU, &LU, &RL, &LL, 0, 195, max_speed, acceleration_steps);
     HAL_Delay(10);
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
-    HAL_Delay(10);
-    HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
-    while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
-    HAL_Delay(10);
     // 向前到拐角
     linearMovement(&RU, &LU, &RL, &LL, 5, 130, max_speed, acceleration_steps);
     HAL_Delay(10);
@@ -226,6 +221,9 @@ int move_main() {
     // 左转
     linearMovement(&RU, &LU, &RL, &LL, 0, 380, max_speed, acceleration_steps);
     HAL_Delay(10);
+    PID_Angle_Check();
+    PID_Pos_Check();
+    linearMovement(&RU, &LU, &RL, &LL, 1, 20, max_speed, acceleration_steps);
     tt_left();
     tt_right();
 //    pos_check()
@@ -248,6 +246,9 @@ int move_main() {
     // 右转
     linearMovement(&RU, &LU, &RL, &LL, 0, 425, max_speed, acceleration_steps);
     HAL_Delay(10);
+    PID_Angle_Check();
+    PID_Pos_Check();
+    linearMovement(&RU, &LU, &RL, &LL, 1, 20, max_speed, acceleration_steps);
     tt_left();
     tt_right();
     //    pos_check()
@@ -296,6 +297,9 @@ int move_main() {
     HAL_Delay(10);
     tt_left();
     tt_right();
+    PID_Angle_Check();
+    PID_Pos_Check();
+    linearMovement(&RU, &LU, &RL, &LL, 1, 20, max_speed, acceleration_steps);
 //    pos_check()
     // 向前到加工区
     linearMovement(&RU, &LU, &RL, &LL, 5, 285, max_speed, acceleration_steps);
@@ -314,6 +318,9 @@ int move_main() {
     // 右转
     linearMovement(&RU, &LU, &RL, &LL, 0, 425, max_speed, acceleration_steps);
     HAL_Delay(10);
+    PID_Angle_Check();
+    PID_Pos_Check();
+    linearMovement(&RU, &LU, &RL, &LL, 1, 20, max_speed, acceleration_steps);
     tt_left();
     tt_right();
 //    pos_check()
