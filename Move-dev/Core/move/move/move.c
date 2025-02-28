@@ -5,6 +5,8 @@
 
 // Your C functions and implementation go here
 #include <stdint.h>
+#include <string.h>
+#include <stdio.h>
 
 // 定义轮子的周长 (单位: mm)
 double WHEEL_CIRCUMFERENCE = 235.5;
@@ -169,6 +171,24 @@ void tt_left(){
     TT_motion(&TT,4000,0,150);//回到中心
 
 }
+float USART_Reading()
+{
+    uint8_t xeel[3]="gyj";
+    HAL_UART_Transmit(&huart1, xeel, strlen((char*)xeel), HAL_MAX_DELAY);
+    for (int i = 0; i < 1500; i++)
+    {
+        if (HAL_UART_Receive(&huart1, xeel, sizeof(xeel), HAL_MAX_DELAY) == HAL_OK)
+        {
+            if (strcmp((char*)xeel, "END") == 0)  //
+            {
+                HAL_UART_Transmit(&huart1, xeel, strlen((char*)xeel), HAL_MAX_DELAY);
+                return 1000;
+            }
+        }
+    }
+    return 0;
+}
+
 // 主程序
 int move_main() {
 
@@ -190,10 +210,8 @@ int move_main() {
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_RESET);
     while (!HAL_GPIO_ReadPin(FLAG_IN_GPIO_Port,FLAG_IN_Pin));
     HAL_Delay(10);
-
+//    USART_Reading();
     // 到扫码区扫码
-
-
     linearMovement(&RU, &LU, &RL, &LL, 0, 415, max_speed, acceleration_steps);
     HAL_Delay(10);
     HAL_GPIO_WritePin(FLAG_OUT_GPIO_Port,FLAG_OUT_Pin,GPIO_PIN_SET);
@@ -252,7 +270,6 @@ int move_main() {
     tt_left();
     tt_right();
     //    pos_check()
-
     // 向前到暂存区
     linearMovement(&RU, &LU, &RL, &LL, 0, 420, max_speed, acceleration_steps);
     HAL_Delay(10);
